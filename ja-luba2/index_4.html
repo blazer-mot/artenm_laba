@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Музыкальный плеер</title>
+  <link rel="stylesheet" href="style_4.css">
+</head>
+<body>
+
+<div class="layout">
+  <!-- Левый блок: основной плеер -->
+  <div class="left">
+    <div id="trackList" class="track-list active">
+      <h2>Выберите трек</h2>
+      <ul>
+        <li onclick="loadTrack(0)">Где твоя любовь</li>
+        <li onclick="loadTrack(1)">Время</li>
+        <li onclick="loadTrack(2)">Малиновый закат</li>
+        <li onclick="loadTrack(3)">Небо поможет нам</li>
+        <li onclick="loadTrack(4)">Улицы без фонарей</li>
+      </ul>
+    </div>
+
+    <div id="playerBlock" class="player">
+      <img id="trackCover" src="" alt="Обложка" class="cover">
+      <div class="info">
+        <h2 id="trackTitle">Трек</h2>
+        <p id="trackArtist">Исполнитель</p>
+      </div>
+      <div class="progress">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progressBar" value="0" min="0" max="100">
+        <span id="duration">-0:00</span>
+      </div>
+      <div class="controls">
+        <button onclick="shuffleTrack()">🔀</button>
+        <button onclick="prevTrack()">⏮</button>
+        <button onclick="togglePlay()">⏯</button>
+        <button onclick="nextTrack()">⏭</button>
+        <div class="volume-control">
+          <span>🔊</span>
+          <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
+        </div>
+      </div>
+      <div class="extra-buttons">
+        <button onclick="showLyrics()">Текст</button>
+        <a id="downloadBtn" href="#" download class="download-link">Скачать</a>
+        <button onclick="backToList()">Назад</button>
+      </div>
+      <div id="lyrics" class="lyrics" style="display:none;"></div>
+      <audio id="audioPlayer"></audio>
+    </div>
+  </div>
+
+  <!-- Правый блок: новые плейлисты -->
+  <div class="right">
+    <button id="createPlayerBtn" type="button" class="primary">Создать плейлист</button>
+    <div id="playersContainer"></div>
+  </div>
+</div>
+
+<!-- Модальное окно -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h2>Создать плейлист</h2>
+    <label class="field">
+      <span>Название плейлиста:</span>
+      <input type="text" id="playlistNameInput" placeholder="Мой плейлист">
+    </label>
+
+    <h3>Добавить песню</h3>
+    <label class="field">
+      <span>Название трека:</span>
+      <input type="text" id="songTitleInput" placeholder="Название">
+    </label>
+    <label class="field">
+      <span>Исполнитель:</span>
+      <input type="text" id="songArtistInput" placeholder="Исполнитель">
+    </label>
+    <label class="field">
+      <span>Файл mp3:</span>
+      <input type="file" id="songFileInput" accept="audio/mp3,audio/mpeg">
+    </label>
+    <label class="field">
+      <span>Файл обложки:</span>
+      <input type="file" id="songCoverFileInput" accept="image/*">
+    </label>
+    <label class="field">
+      <span>Текст песни:</span>
+      <textarea id="songLyricsInput" rows="4" placeholder="Текст песни (необязательно)"></textarea>
+    </label>
+
+    <button id="addSongBtn" type="button" class="secondary">Добавить песню</button>
+    <ul id="songsPreview" class="preview-list"></ul>
+
+    <div class="modal-actions">
+      <button id="savePlaylistBtn" type="button" class="primary">Сохранить плейлист</button>
+      <button id="closeModalBtn" type="button">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script src="script_4.js" defer></script>
+</body>
+</html>
