@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Музыкальный плеер</title>
+  <link rel="stylesheet" href="style_4.css">
+</head>
+<body>
+
+  <button id="createBtn" class="create-btn">Создать плеер</button>
+
+  <div id="trackList" class="track-list active">
+    <h2>Выберите трек</h2>
+    <ul>
+      <li onclick="loadTrack(0)"><img src="obl/gde_tvoya_lyubov.jpg"> твоя любовь</li>
+      <li onclick="loadTrack(1)"><img src="obl/vremya.jpg"> Время</li>
+      <li onclick="loadTrack(2)"><img src="obl/malinovyy_zakat.jpg"> Малиновый закат</li>
+      <li onclick="loadTrack(3)"><img src="obl/nebo_pomozhet_nam.jpg"> Небо поможет нам</li>
+      <li onclick="loadTrack(4)"><img src="obl/ulitsy_bez_fonarey.jpg"> Улицы без фонарей</li>
+    </ul>
+  </div>
+
+  <div id="playerBlock" class="player">
+    <img id="trackCover" src="" alt="Обложка" class="cover">
+
+    <div class="info">
+      <h2 id="trackTitle">Трек</h2>
+      <p id="trackArtist">Исполнитель</p>
+    </div>
+
+    <div class="progress">
+      <span id="currentTime">0:00</span>
+      <input type="range" id="progressBar" value="0" min="0" max="100">
+      <span id="duration">-0:00</span>
+    </div>
+
+    <div class="controls">
+      <button onclick="shuffleTrack()" title="Случайный трек"><img src="knop/slych.png"></button>
+      <button onclick="prevTrack()" title="Назад"><img src="knop/levo.png"></button>
+      <button onclick="togglePlay()" title="Воспроизвести/Пауза"><img src="knop/пауза.png"></button>
+      <button onclick="nextTrack()" title="Вперёд"><img src="knop/право.png"></button>
+      <div class="volume-control" title="Громкость">
+        <img src="knop/звук.png"> <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)">
+      </div>
+    </div>
+
+    <div class="extra-buttons">
+      <button onclick="showLyrics()" title="Текст песни"><img src="knop/text.png"></button>
+      <a id="downloadBtn" href="#" download><button title="Скачать"><img src="knop/skacka.png"></button></a>
+      <button onclick="backToList()" title="Назад к списку"><img src="knop/nazad.png"></button>
+    </div>
+
+    <div id="lyrics" style="display:none;"></div>
+    <audio id="audioPlayer"></audio>
+  </div>
+
+
+  <div id="playersContainer"></div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>Создать новый плеер</h2>
+      <form id="playerForm">
+        <input type="text" id="artistInput" placeholder="Исполнитель" required>
+
+        <div id="tracksInputs">
+          <div class="track-input">
+            <input type="text" placeholder="Название трека" class="title" required>
+            <input type="file" accept="audio/mpeg" class="file" required>
+            <input type="file" accept="image/*" class="cover" required>
+            <textarea placeholder="Текст песни" class="lyrics"></textarea>
+          </div>
+        </div>
+
+        <button type="button" id="addTrackBtn">+ Добавить трек</button>
+        <button type="submit">Создать плеер</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script_4.js"></script>
+</body>
+</html>

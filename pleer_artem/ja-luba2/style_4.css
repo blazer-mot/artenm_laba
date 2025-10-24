@@ -1,0 +1,239 @@
+body {
+  background: #0f0f0f;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  gap: 30px;
+}
+
+.create-btn {
+  padding: 10px 18px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  background: #1c1c1c;
+  color: #eee;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.create-btn:hover {
+  background: #2a2a2a;
+}
+
+.track-list,
+#playerBlock {
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  border: 1px solid #2a2a2a;
+  display: none;
+}
+.track-list.active,
+#playerBlock.active {
+  display: block;
+}
+
+.player {
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  border: 1px solid #2a2a2a;
+  margin-bottom: 20px;
+}
+
+.track-list h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #eee;
+}
+.track-list ul {
+  list-style: none;
+  padding: 0;
+}
+.track-list li {
+  background: #2a2a2a;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.track-list li:hover {
+  background: #3a3a3a;
+}
+.track-list li img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.cover {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.info h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.info p {
+  margin: 6px 0 16px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.progress input[type="range"] {
+  flex: 1;
+  margin: 0 10px;
+  accent-color: #fff;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+.controls button {
+  background: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.controls button:hover {
+  background: #ddd;
+}
+.controls img {
+  width: 24px;
+  height: 24px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.volume-control img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+.volume-control input[type="range"] {
+  width: 100px;
+  accent-color: #fff;
+}
+
+.extra-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+.extra-buttons button,
+.extra-buttons a button {
+  background: #fff;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.extra-buttons button:hover,
+.extra-buttons a button:hover {
+  background: #ddd;
+}
+.extra-buttons img {
+  width: 20px;
+  height: 20px;
+}
+
+#lyrics,
+.player .lyrics {
+  margin-top: 15px;
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+  font-style: italic;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+  color: #ddd;
+}
+
+#playersContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+.modal-content {
+  background: #1c1c1c;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 320px;
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  border: 1px solid #2a2a2a;
+}
+.modal-content input,
+.modal-content textarea,
+.modal-content button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #2a2a2a;
+  background: #2a2a2a;
+  color: #eee;
+}
+.modal-content textarea {
+  min-height: 80px;
+}
+.modal-content button {
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal-content button:hover {
+  background: #ddd;
+}
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #eee;
+}
